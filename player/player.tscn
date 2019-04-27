@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/movement.gd" type="Script" id=2]
+[ext_resource path="res://player/sweep_box.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9, 13 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -24,3 +28,29 @@ shape = SubResource( 1 )
 [node name="movement" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[node name="wep_holder" type="Node2D" parent="."]
+
+[node name="sweep_box" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="sweep_box"]
+margin_left = 9.0
+margin_top = -12.0
+margin_right = 26.0
+margin_bottom = 13.0
+color = Color( 0.705882, 0.188235, 0.188235, 0.576471 )
+
+[node name="Area2D" type="Area2D" parent="sweep_box"]
+position = Vector2( 16, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sweep_box/Area2D"]
+shape = SubResource( 2 )
+
+[node name="timer" type="Timer" parent="sweep_box"]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="sweep_box/timer" to="sweep_box" method="_on_timer_timeout"]
