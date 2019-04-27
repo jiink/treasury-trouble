@@ -8,9 +8,10 @@ extents = Vector2( 8, 3 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 10 )
 
-[node name="bandit" type="KinematicBody2D"]
+[node name="bandit" type="KinematicBody2D" groups=[
+"foes",
+]]
 script = ExtResource( 1 )
-speed = 25.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -8.0

@@ -28,10 +28,10 @@ gdscript/warnings/unused_signal=false
 
 [display]
 
-window/size/width=384
-window/size/height=216
-window/size/test_width=768
-window/size/test_height=432
+window/size/width=256
+window/size/height=144
+window/size/test_width=1152
+window/size/test_height=648
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
