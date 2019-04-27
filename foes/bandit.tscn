@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://foes/bandit.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 10 )
+
+[node name="bandit" type="KinematicBody2D"]
+script = ExtResource( 1 )
+speed = 25.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -21.0
+margin_right = 9.0
+margin_bottom = 4.0
+color = Color( 0.752941, 0.454902, 0.278431, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="grab_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grab_zone"]
+shape = SubResource( 2 )
+
+[node name="grab_timer" type="Timer" parent="grab_zone"]
+
