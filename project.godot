@@ -19,6 +19,13 @@ config/name="treasury-trouble"
 run/main_scene="res://treasury.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unused_signal=false
+
 [display]
 
 window/size/width=384
