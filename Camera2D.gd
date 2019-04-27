@@ -4,4 +4,4 @@ export(bool) var follow_player = true
 
 func _process(delta):
 	if follow_player:
-		position = get_node("../YSort/player").position
+		position = get_node("../sort/player").position
