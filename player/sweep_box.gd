@@ -14,8 +14,11 @@ func wake():
 	
 	for body in $area.get_overlapping_bodies():
 		if body.is_in_group("foes"):
-			body.get_hurt($"..".damage)
-	
+			var p = $".."
+			body.get_hurt(p.damage)
+			#body.move_and_slide(Vector2(0,-1).rotated(body.get_global_position().angle_to_point($"..".position))*$"..".power)
+			body.be_knocked_back(p.power, p.position)
+			
 	$sprite.frame = 0
 	$sprite.playing = true
 

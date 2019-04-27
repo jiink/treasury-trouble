@@ -3,7 +3,8 @@ extends KinematicBody2D
 var weapons = ["sword", "crossbow"]
 var wep_i = 0
 var weapon = weapons[wep_i]
-var damage = 3
+var damage = 1
+var power = 100
 var swing_delay = 0.3
 
 

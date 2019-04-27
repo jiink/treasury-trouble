@@ -9,6 +9,7 @@ enum{
 	CHASING,
 	START_COLLECTING,
 	COLLECTING,
+	KNOCKEDBACK,
 	}
 var state
 
@@ -17,6 +18,9 @@ var target
 var max_hp = 6
 var hp = max_hp
 
+var knockbacktime = 0
+var knockbackspeed = 0
+var knockbackdir = 0
 
 func _ready():
 	state = CHASING if enabled else STOPPED
@@ -38,7 +42,10 @@ func _process(delta):
 	elif state == START_COLLECTING:
 		state = COLLECTING
 		$grab_zone/grab_timer.start(1)
-		
+	
+	elif state == KNOCKEDBACK:
+		knockbacktime -= 1
+		move_and_slide(knockbackdir * knockbackspeed)
 
 func find_goldpot():
 	# nearest one
@@ -66,6 +73,14 @@ func get_hurt(d):
 	print("%s got hurt" % name)
 	if hp <= 0:
 		die()
+
+func be_knocked_back(power, pos):
+	knockbacktime = 40
+	knockbackspeed = power
+	
+	print(position.angle_to_point(pos))
+	knockbackdir = Vector2(0,-1).rotated(position.angle_to_point(pos))
+	state = KNOCKEDBACK
 
 func die():
 	queue_free()

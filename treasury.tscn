@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://treasury.gd" type="Script" id=1]
 [ext_resource path="res://room/woodfloor.png" type="Texture" id=2]
@@ -7,9 +7,8 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://room/goldpot/goldpot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://foes/bandit.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fonts/small.tres" type="DynamicFont" id=8]
-[ext_resource path="res://equipped_wep.gd" type="Script" id=9]
-[ext_resource path="res://Camera2D.gd" type="Script" id=10]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Camera2D.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "woodfloor.png 0"
@@ -51,6 +50,7 @@ texture = ExtResource( 3 )
 
 [node name="collisions" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
 position = Vector2( -139, -322 )
@@ -116,50 +116,35 @@ texture = ExtResource( 4 )
 [node name="player" parent="sort" instance=ExtResource( 5 )]
 
 [node name="goldpot" parent="sort" instance=ExtResource( 6 )]
-position = Vector2( 91, -44 )
+position = Vector2( 110, -169 )
 
 [node name="goldpot2" parent="sort" instance=ExtResource( 6 )]
-position = Vector2( -81, -40 )
+position = Vector2( -104, -166 )
 
-[node name="foes" type="Node2D" parent="sort"]
+[node name="goldpot3" parent="sort" instance=ExtResource( 6 )]
+position = Vector2( 3, 137 )
+
+[node name="foes" type="YSort" parent="sort"]
 
 [node name="bandit" parent="sort/foes" instance=ExtResource( 7 )]
-position = Vector2( 25, -87 )
+position = Vector2( 13, -276 )
 
 [node name="bandit2" parent="sort/foes" instance=ExtResource( 7 )]
-position = Vector2( -56, -90 )
+position = Vector2( -48, -199 )
 
 [node name="bandit3" parent="sort/foes" instance=ExtResource( 7 )]
-position = Vector2( 74, 14 )
+position = Vector2( -115, 123 )
 
 [node name="bandit4" parent="sort/foes" instance=ExtResource( 7 )]
-position = Vector2( 109, -2 )
+position = Vector2( 101, 135 )
 
 [node name="bandit5" parent="sort/foes" instance=ExtResource( 7 )]
-position = Vector2( -40, 41 )
+position = Vector2( 101, -21 )
 
 [node name="bandit6" parent="sort/foes" instance=ExtResource( 7 )]
 position = Vector2( -2, 28 )
 
-[node name="hud" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="hud"]
-margin_left = 192.0
-margin_top = 4.0
-margin_right = 249.0
-margin_bottom = 35.0
-color = Color( 1, 1, 1, 0.121569 )
-
-[node name="equipped_wep" type="Label" parent="hud"]
-margin_left = 188.0
-margin_top = 9.0
-margin_right = 252.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 8 )
-text = "weapon"
-align = 1
-valign = 1
-script = ExtResource( 9 )
+[node name="hud" parent="." instance=ExtResource( 8 )]
 
 [node name="cam" type="Camera2D" parent="."]
 current = true
@@ -167,8 +152,13 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="wave_timer" type="Timer" parent="."]
+one_shot = true
+
+
+[editable path="hud"]
