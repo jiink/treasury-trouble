@@ -1,0 +1,16 @@
+title: Treasury Trouble
+
+You are the CEO of a treasury
+    you move around and can attack with melee or ranged
+
+medieval times, top-down, mouse + kb, aim with mouse
+
+you lose when the treasury run out of money
+X amount of sorta "spots" of money/gold that are spread out that robbers can steal from
+defend against waves of robbers who are stealing from your treasure
+
+Spend bank money between waves to upgrade defense or your weapons
+    watch out, cause spending money on stuff means there's less money you have, so robbers can make you lose quickly
+
+
+main antagonist - captain crime
