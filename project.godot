@@ -18,6 +18,15 @@ _global_script_class_icons={
 config/name="treasury-trouble"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=384
+window/size/height=216
+window/size/test_width=768
+window/size/test_height=432
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
