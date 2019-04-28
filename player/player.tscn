@@ -48,7 +48,7 @@ radius = 3.0
 height = 10.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 13.703, 20.8282 )
+extents = Vector2( 15.9, 14 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -96,12 +96,14 @@ margin_bottom = 20.0
 color = Color( 0.705882, 0.188235, 0.188235, 0.576471 )
 
 [node name="area" type="Area2D" parent="sweep_box"]
+visible = false
 position = Vector2( 22.1, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sweep_box/area"]
+position = Vector2( -4, 0 )
 shape = SubResource( 3 )
 
 [node name="timer" type="Timer" parent="sweep_box"]

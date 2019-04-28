@@ -2,7 +2,7 @@ extends Node
 
 var wave = 1
 var preptime = 3
-var wavetime = 10
+var wavetime = 30
 
 onready var wave_info = get_node("../hud/wave_info")
 onready var wave_timer = get_node("../wave_timer")

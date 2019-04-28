@@ -9,4 +9,5 @@ var money_total
 
 func _process(delta):
 	money_total = get_node(goldpot_a).money + get_node(goldpot_c).money + get_node(goldpot_b).money
-	
+	if money_total <= 0:
+		

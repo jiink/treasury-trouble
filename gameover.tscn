@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fonts/big.tres" type="DynamicFont" id=1]
+
+[node name="gameover" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -14.0
+margin_right = 271.0
+margin_bottom = 145.0
+color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 46.0
+margin_top = 52.0
+margin_right = 211.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 1 )
+text = "Bankrupt!"
+align = 1
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 116.0
+margin_top = 84.0
+margin_right = 156.0
+margin_bottom = 124.0
