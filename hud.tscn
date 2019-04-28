@@ -51,15 +51,14 @@ script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="guage_a"]
 margin_left = 78.0
-margin_top = -3.0
+margin_top = 1.0
 margin_right = 118.0
-margin_bottom = 11.0
+margin_bottom = 15.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "A"
 
 [node name="guage_a2" type="TextureProgress" parent="."]
-editor/display_folded = true
 margin_left = 3.0
 margin_top = 10.0
 margin_right = 88.0
@@ -72,15 +71,14 @@ letter = "b"
 
 [node name="Label2" type="Label" parent="guage_a2"]
 margin_left = 78.0
-margin_top = -3.0
+margin_top = 1.0
 margin_right = 118.0
-margin_bottom = 11.0
+margin_bottom = 15.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "B"
 
 [node name="guage_a3" type="TextureProgress" parent="."]
-editor/display_folded = true
 margin_left = 3.0
 margin_top = 17.0
 margin_right = 88.0
@@ -93,18 +91,18 @@ letter = "c"
 
 [node name="Label3" type="Label" parent="guage_a3"]
 margin_left = 78.0
-margin_top = -3.0
+margin_top = 1.0
 margin_right = 118.0
-margin_bottom = 11.0
+margin_bottom = 15.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "C"
 
 [node name="total" type="Label" parent="."]
 margin_left = 4.0
-margin_top = 24.0
+margin_top = 27.0
 margin_right = 87.0
-margin_bottom = 38.0
+margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.901961, 0.807843, 0.184314, 1 )
 custom_colors/font_color_shadow = Color( 0.133333, 0.12549, 0.203922, 1 )

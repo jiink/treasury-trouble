@@ -37,6 +37,9 @@ func _process(delta):
 			
 	wave_info.text = "Wave %s: %s\n%s" % [wave, state_s, int(wave_timer.time_left)]
 	if state == START_PREP:
+		
+		
+		
 		wave_timer.start(preptime)
 		state = PREP
 	
