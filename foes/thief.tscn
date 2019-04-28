@@ -21,11 +21,13 @@ margin_bottom = 4.0
 color = Color( 0.752941, 0.454902, 0.278431, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="grab_zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grab_zone"]
+visible = false
 shape = SubResource( 2 )
 
 [node name="grab_timer" type="Timer" parent="grab_zone"]

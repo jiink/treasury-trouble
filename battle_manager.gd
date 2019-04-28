@@ -7,6 +7,9 @@ var wavetime = 10
 onready var wave_info = get_node("../hud/wave_info")
 onready var wave_timer = get_node("../wave_timer")
 
+
+
+
 enum {
 	WAIT,
 	START_PREP,
@@ -18,6 +21,7 @@ var state
 
 func _ready():
 	wave_timer.connect("timeout", self, "timer_end")
+	$spawn_timer.connect("timeout", self, "spawn_timer_end")
 	state = START_PREP 
 	
 func _process(delta):
@@ -27,6 +31,8 @@ func _process(delta):
 			state_s = "Preperation"
 		IN_PROGRESS:
 			state_s = "In Progress"
+		
+			
 			
 	wave_info.text = "Wave %s: %s\n%s" % [wave, state_s, int(wave_timer.time_left)]
 	if state == START_PREP:
@@ -38,8 +44,21 @@ func timer_end():
 	if state == PREP:
 		state = IN_PROGRESS
 		wave_timer.start(wavetime)
+		$spawn_timer.start(1)
 		
 	elif state == IN_PROGRESS:
 		state = PREP
 		wave += 1
 		wave_timer.start(preptime)
+
+func spawn_foe(where, amount):
+	for i in range(amount):
+		var spawnpos = where + Vector2(int(randf()*5.0 - 2.5), int(randf()*5.0 - 2.5))
+		var foe = load("res://foes/thief.tscn").instance()
+		foe.position = spawnpos
+		$"../sort/foes".add_child(foe)
+
+func spawn_timer_end():
+	spawn_foe($spawnpoints.get_children()[randi() % $spawnpoints.get_children().size()].position, randi() % 4)
+	if state == IN_PROGRESS:
+		$spawn_timer.start(randf() * 5)

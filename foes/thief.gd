@@ -36,7 +36,8 @@ func _process(delta):
 	elif state == CHASING:
 		if target != null:
 			look_at(target.position)
-		velocity = Vector2(1, 0).rotated(rotation) * speed
+		var sidev = randf() * 4 - 2
+		velocity = Vector2(1, sidev).rotated(rotation) * speed
 		rotation = 0
 		velocity = move_and_slide(velocity)
 	
@@ -64,11 +65,11 @@ func find_goldpot(mode = "nearest"):
 		return get_tree().get_nodes_in_group("goldpots")[int(randf()*3)]
 
 func on_body_enter(body):
-	if body.get_owner().is_in_group("goldpots"):
+	if body.get_node("..").is_in_group("goldpots"):
 		state = START_COLLECTING
 
 func on_body_exit(body):
-	if body.get_owner().is_in_group("goldpots"):
+	if body.get_node("..").is_in_group("goldpots"):
 		state = CHASING
 
 func grab_timer_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://treasury.gd" type="Script" id=1]
 [ext_resource path="res://battle_manager.gd" type="Script" id=2]
@@ -7,11 +7,10 @@
 [ext_resource path="res://room/window.png" type="Texture" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://room/goldpot/goldpot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://foes/thief.tscn" type="PackedScene" id=8]
-[ext_resource path="res://room/enterancetop.png" type="Texture" id=9]
-[ext_resource path="res://room/top2.png" type="Texture" id=10]
-[ext_resource path="res://hud.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Camera2D.gd" type="Script" id=12]
+[ext_resource path="res://room/enterancetop.png" type="Texture" id=8]
+[ext_resource path="res://room/top2.png" type="Texture" id=9]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Camera2D.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "woodfloor.png 0"
@@ -39,6 +38,14 @@ goldpot_c = NodePath("sort/goldpot3")
 
 [node name="battle_manager" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="spawn_timer" type="Timer" parent="battle_manager"]
+one_shot = true
+
+[node name="spawnpoints" type="Node2D" parent="battle_manager"]
+
+[node name="point" type="Position2D" parent="battle_manager/spawnpoints"]
+position = Vector2( -13, -439 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -137,11 +144,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="spawnpoints" type="Node2D" parent="."]
-
-[node name="Position2D" type="Position2D" parent="spawnpoints"]
-position = Vector2( -13, -439 )
-
 [node name="window" type="Sprite" parent="."]
 position = Vector2( 162, -88 )
 texture = ExtResource( 5 )
@@ -149,6 +151,7 @@ texture = ExtResource( 5 )
 [node name="sort" type="YSort" parent="."]
 
 [node name="player" parent="sort" instance=ExtResource( 6 )]
+position = Vector2( 2, -362 )
 
 [node name="goldpot" parent="sort" instance=ExtResource( 7 )]
 position = Vector2( 110, -169 )
@@ -161,30 +164,15 @@ position = Vector2( 3, 137 )
 
 [node name="foes" type="YSort" parent="sort"]
 
-[node name="thief" parent="sort/foes" instance=ExtResource( 8 )]
-position = Vector2( -24, -435 )
-
-[node name="thief2" parent="sort/foes" instance=ExtResource( 8 )]
-position = Vector2( -24, -435 )
-
-[node name="thief3" parent="sort/foes" instance=ExtResource( 8 )]
-position = Vector2( -24, -435 )
-
-[node name="thief4" parent="sort/foes" instance=ExtResource( 8 )]
-position = Vector2( -24, -435 )
-
-[node name="thief5" parent="sort/foes" instance=ExtResource( 8 )]
-position = Vector2( -24, -435 )
-
 [node name="enterancetop" type="Sprite" parent="."]
-position = Vector2( -10, -432 )
-texture = ExtResource( 9 )
+position = Vector2( 14, -469 )
+texture = ExtResource( 8 )
 
 [node name="top2" type="Sprite" parent="enterancetop"]
-position = Vector2( 22, 623 )
-texture = ExtResource( 10 )
+position = Vector2( -3, 660 )
+texture = ExtResource( 9 )
 
-[node name="hud" parent="." instance=ExtResource( 11 )]
+[node name="hud" parent="." instance=ExtResource( 10 )]
 
 [node name="cam" type="Camera2D" parent="."]
 current = true
@@ -192,7 +180,7 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
