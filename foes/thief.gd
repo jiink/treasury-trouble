@@ -58,7 +58,8 @@ func find_goldpot(mode = "nearest"):
 		var nearest_goldpot = goldpots[0]
 		for goldpot in goldpots:
 			if goldpot.global_position.distance_to(global_position) < nearest_goldpot.global_position.distance_to(global_position):
-				nearest_goldpot = goldpot
+				if goldpot.money > 0:
+					nearest_goldpot = goldpot
 		
 		return nearest_goldpot
 	elif mode == "random":
@@ -74,6 +75,9 @@ func on_body_exit(body):
 
 func grab_timer_timeout():
 	target.remove_money(randi() % 100 + 69)
+	
+	if target.money <= 0:
+		target = find_goldpot()
 	
 func get_hurt(d):
 	hp -= d

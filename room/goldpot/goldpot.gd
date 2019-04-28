@@ -5,3 +5,5 @@ var money = money_capacity
 
 func remove_money(amount):
 	money -= amount
+	if money < 0:
+		money = 0
