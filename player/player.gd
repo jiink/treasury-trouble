@@ -4,7 +4,7 @@ var weapons = ["sword", "crossbow"]
 var wep_i = 0
 var weapon = weapons[wep_i]
 var damage = 1
-var power = 100
+var power = 200
 var swing_delay = 0.3
 
 

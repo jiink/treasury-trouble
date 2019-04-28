@@ -12,6 +12,7 @@ enum{
 	KNOCKEDBACK,
 	}
 var state
+var prevstate
 
 var target
 
@@ -26,7 +27,7 @@ func _ready():
 	state = CHASING if enabled else STOPPED
 	$grab_zone.connect("body_entered", self, "on_body_enter")
 	$grab_zone/grab_timer.connect("timeout", self, "grab_timer_timeout")
-	target = find_goldpot()
+	target = find_goldpot("random")
 	
 func _process(delta):
 	if state == STOPPED:
@@ -45,17 +46,22 @@ func _process(delta):
 	
 	elif state == KNOCKEDBACK:
 		knockbacktime -= 1
+		if knockbacktime <= 0:
+			state = CHASING
 		move_and_slide(knockbackdir * knockbackspeed)
 
-func find_goldpot():
-	# nearest one
-	var goldpots = get_tree().get_nodes_in_group("goldpots")
-	var nearest_goldpot = goldpots[0]
-	for goldpot in goldpots:
-		if goldpot.global_position.distance_to(global_position) < nearest_goldpot.global_position.distance_to(global_position):
-			nearest_goldpot = goldpot
-	
-	return nearest_goldpot
+func find_goldpot(mode = "nearest"):
+	if mode == "nearest":
+		# nearest one
+		var goldpots = get_tree().get_nodes_in_group("goldpots")
+		var nearest_goldpot = goldpots[0]
+		for goldpot in goldpots:
+			if goldpot.global_position.distance_to(global_position) < nearest_goldpot.global_position.distance_to(global_position):
+				nearest_goldpot = goldpot
+		
+		return nearest_goldpot
+	elif mode == "random":
+		return get_tree().get_nodes_in_group("goldpots")[int(randf()*3)]
 
 func on_body_enter(body):
 	if body.get_owner().is_in_group("goldpots"):
@@ -75,11 +81,12 @@ func get_hurt(d):
 		die()
 
 func be_knocked_back(power, pos):
-	knockbacktime = 40
+	knockbacktime = 10
 	knockbackspeed = power
 	
 	print(position.angle_to_point(pos))
-	knockbackdir = Vector2(0,-1).rotated(position.angle_to_point(pos))
+	knockbackdir = Vector2(0,-1).rotated(position.angle_to_point(pos) - 3*PI/2)
+	prevstate = state
 	state = KNOCKEDBACK
 
 func die():
