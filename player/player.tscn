@@ -4,15 +4,15 @@
 [ext_resource path="res://player/sprites/ceo_run_frontright1.png" type="Texture" id=2]
 [ext_resource path="res://player/sprites/ceo_run_frontright2.png" type="Texture" id=3]
 [ext_resource path="res://player/sprites/ceo_run_frontright3.png" type="Texture" id=4]
-[ext_resource path="res://player/sprites/ceo_run_backleft1.png" type="Texture" id=5]
-[ext_resource path="res://player/sprites/ceo_run_backleft2.png" type="Texture" id=6]
-[ext_resource path="res://player/sprites/ceo_run_backleft3.png" type="Texture" id=7]
-[ext_resource path="res://player/sprites/ceo_run_backright1.png" type="Texture" id=8]
-[ext_resource path="res://player/sprites/ceo_run_backright2.png" type="Texture" id=9]
-[ext_resource path="res://player/sprites/ceo_run_backright3.png" type="Texture" id=10]
-[ext_resource path="res://player/sprites/ceo_run_frontleft1.png" type="Texture" id=11]
-[ext_resource path="res://player/sprites/ceo_run_frontleft2.png" type="Texture" id=12]
-[ext_resource path="res://player/sprites/ceo_run_frontleft3.png" type="Texture" id=13]
+[ext_resource path="res://player/sprites/ceo_run_frontleft1.png" type="Texture" id=5]
+[ext_resource path="res://player/sprites/ceo_run_frontleft2.png" type="Texture" id=6]
+[ext_resource path="res://player/sprites/ceo_run_frontleft3.png" type="Texture" id=7]
+[ext_resource path="res://player/sprites/ceo_run_backleft1.png" type="Texture" id=8]
+[ext_resource path="res://player/sprites/ceo_run_backleft2.png" type="Texture" id=9]
+[ext_resource path="res://player/sprites/ceo_run_backleft3.png" type="Texture" id=10]
+[ext_resource path="res://player/sprites/ceo_run_backright1.png" type="Texture" id=11]
+[ext_resource path="res://player/sprites/ceo_run_backright2.png" type="Texture" id=12]
+[ext_resource path="res://player/sprites/ceo_run_backright3.png" type="Texture" id=13]
 [ext_resource path="res://player/movement.gd" type="Script" id=14]
 [ext_resource path="res://player/sweep_box.gd" type="Script" id=15]
 [ext_resource path="res://player/sprites/sweep4.png" type="Texture" id=16]
@@ -29,17 +29,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "backleft",
+"name": "frontleft",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "backright",
+"name": "backleft",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "frontleft",
+"name": "backright",
 "speed": 10.0
 } ]
 

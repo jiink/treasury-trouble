@@ -1,8 +1,9 @@
 extends Node
 
 var wave = 1
-var preptime = 3
-var wavetime = 30
+var preptime = 15
+var wavetime = 40
+
 
 onready var wave_info = get_node("../hud/wave_info")
 onready var wave_timer = get_node("../wave_timer")
@@ -61,4 +62,4 @@ func spawn_foe(where, amount):
 func spawn_timer_end():
 	spawn_foe($spawnpoints.get_children()[randi() % $spawnpoints.get_children().size()].position, randi() % 4)
 	if state == IN_PROGRESS:
-		$spawn_timer.start(randf() * 5)
+		$spawn_timer.start(randf() * 4 + 5)

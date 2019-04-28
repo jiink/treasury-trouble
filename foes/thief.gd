@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var velocity
-export(float) var speed = 25
+var speed = 40
 export(bool) var enabled = true
 
 enum{
@@ -73,7 +73,7 @@ func on_body_exit(body):
 		state = CHASING
 
 func grab_timer_timeout():
-	target.remove_money(73)
+	target.remove_money(randi() % 100 + 69)
 	
 func get_hurt(d):
 	hp -= d
