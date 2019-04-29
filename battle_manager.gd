@@ -18,6 +18,7 @@ enum {
 	PREP,
 	START_WAVE,
 	IN_PROGRESS,
+	WAIT_FOR_PLAYER,
 	}
 var state
 
@@ -31,12 +32,15 @@ func _process(delta):
 	match state:
 		PREP:
 			state_s = "Preperation"
-			for thing in get_tree().get_nodes_in_group("foes"):
-				thing.die()
+#			for thing in get_tree().get_nodes_in_group("foes"):
+#				thing.die()
 				
 		IN_PROGRESS:
 			state_s = "In Progress"
-		
+		WAIT_FOR_PLAYER:
+			state_s = "Kill the remaining %s!" % get_tree().get_nodes_in_group("foes").size()
+			if get_tree().get_nodes_in_group("foes").size() <= 0:
+				do_prep_time()
 			
 			
 	wave_info.text = "Wave %s: %s\n%s" % [wave, state_s, int(wave_timer.time_left)]
@@ -56,7 +60,7 @@ func timer_end():
 		$spawn_timer.start(0.1)
 		
 	elif state == IN_PROGRESS:
-		do_prep_time()
+		state = WAIT_FOR_PLAYER
 
 func do_prep_time():
 	state = PREP
