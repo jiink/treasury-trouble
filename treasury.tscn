@@ -8,13 +8,13 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://room/goldpot/goldpot.tscn" type="PackedScene" id=7]
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=8]
-[ext_resource path="res://foes/thief.tscn" type="PackedScene" id=9]
-[ext_resource path="res://room/shop/shopcart.tscn" type="PackedScene" id=10]
-[ext_resource path="res://room/enterancetop.png" type="Texture" id=11]
-[ext_resource path="res://room/top2.png" type="Texture" id=12]
-[ext_resource path="res://room/doorspawnabove.png" type="Texture" id=13]
-[ext_resource path="res://hud.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Camera2D.gd" type="Script" id=15]
+[ext_resource path="res://room/shop/shopcart.tscn" type="PackedScene" id=9]
+[ext_resource path="res://room/enterancetop.png" type="Texture" id=10]
+[ext_resource path="res://room/top2.png" type="Texture" id=11]
+[ext_resource path="res://room/doorspawnabove.png" type="Texture" id=12]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://sounds/music.ogg" type="AudioStream" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "woodfloor.png 0"
@@ -264,26 +264,23 @@ text = "C"
 
 [node name="foes" type="YSort" parent="sort"]
 
-[node name="thief" parent="sort/foes" instance=ExtResource( 9 )]
-position = Vector2( -23, 52 )
-
-[node name="shopcart" parent="sort" instance=ExtResource( 10 )]
+[node name="shopcart" parent="sort" instance=ExtResource( 9 )]
 
 [node name="enterancetop" type="Sprite" parent="."]
 position = Vector2( 14, -469 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="top2" type="Sprite" parent="enterancetop"]
 position = Vector2( -3, 660 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 offset = Vector2( 0.5, 0 )
 
 [node name="doorspawnabove" type="Sprite" parent="enterancetop"]
 position = Vector2( 172, 382 )
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 offset = Vector2( 0.5, 0 )
 
-[node name="hud" parent="." instance=ExtResource( 14 )]
+[node name="hud" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true
 
 [node name="cam" type="Camera2D" parent="."]
@@ -292,12 +289,16 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="wave_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="music_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true
 
 [editable path="hud"]
