@@ -6,6 +6,7 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "drop_down":
+		$AudioStreamPlayer.play()
 		get_tree().paused = true
 	elif anim_name == "drop_up":
 		queue_free()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gameover.gd" type="Script" id=1]
 [ext_resource path="res://fonts/big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gameover/reset_button1.png" type="Texture" id=3]
 [ext_resource path="res://gameover/reset_button3.png" type="Texture" id=4]
 [ext_resource path="res://gameover/reset_button2.png" type="Texture" id=5]
+[ext_resource path="res://sounds/slam.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "drop_down"
@@ -68,4 +69,7 @@ texture_hover = ExtResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drop_down = SubResource( 1 )
 anims/drop_up = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

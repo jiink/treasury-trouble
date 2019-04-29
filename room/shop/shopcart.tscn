@@ -183,6 +183,7 @@ script = ExtResource( 6 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="buy_menu/VBoxContainer/pow/upgradebtn"]
 stream = ExtResource( 7 )
 volume_db = -12.661
+pitch_scale = 0.8
 
 [node name="abl" type="Label" parent="buy_menu/VBoxContainer"]
 margin_top = 28.0
@@ -234,6 +235,7 @@ script = ExtResource( 6 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="buy_menu/VBoxContainer/abl/upgradebtn"]
 stream = ExtResource( 7 )
 volume_db = -12.661
+pitch_scale = 0.6
 
 [node name="skip" type="Button" parent="buy_menu"]
 margin_left = 50.0
