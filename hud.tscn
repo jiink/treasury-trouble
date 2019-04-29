@@ -3,9 +3,9 @@
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://equipped_wep.gd" type="Script" id=2]
 [ext_resource path="res://fonts/little.tres" type="DynamicFont" id=3]
-[ext_resource path="res://moneyguage.png" type="Texture" id=4]
-[ext_resource path="res://moneyguagefilling.png" type="Texture" id=5]
-[ext_resource path="res://player/guage.gd" type="Script" id=6]
+[ext_resource path="res://moneyguagefilling.png" type="Texture" id=4]
+[ext_resource path="res://player/guage.gd" type="Script" id=5]
+[ext_resource path="res://moneyguage.png" type="Texture" id=6]
 [ext_resource path="res://total.gd" type="Script" id=7]
 [ext_resource path="res://skip_wait_btn.gd" type="Script" id=8]
 
@@ -41,60 +41,75 @@ align = 1
 autowrap = true
 
 [node name="guage_a" type="TextureProgress" parent="."]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 88.0
-margin_bottom = 13.0
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 90.0
+margin_bottom = 16.0
 value = 37.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-script = ExtResource( 6 )
+texture_progress = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="guage_a"]
-margin_left = 78.0
-margin_top = 1.0
-margin_right = 118.0
-margin_bottom = 15.0
+margin_left = 75.0
+margin_top = -2.0
+margin_right = 86.0
+margin_bottom = 12.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "A"
 
+[node name="moneyguage" type="Sprite" parent="guage_a"]
+show_behind_parent = true
+position = Vector2( -3, -3 )
+texture = ExtResource( 6 )
+centered = false
+
 [node name="guage_a2" type="TextureProgress" parent="."]
-margin_left = 3.0
-margin_top = 10.0
-margin_right = 88.0
-margin_bottom = 20.0
+margin_left = 5.0
+margin_top = 13.0
+margin_right = 90.0
+margin_bottom = 23.0
 value = 37.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-script = ExtResource( 6 )
+texture_progress = ExtResource( 4 )
+script = ExtResource( 5 )
 letter = "b"
 
 [node name="Label2" type="Label" parent="guage_a2"]
-margin_left = 78.0
-margin_top = 1.0
-margin_right = 118.0
-margin_bottom = 15.0
+margin_left = 75.0
+margin_top = -2.0
+margin_right = 87.0
+margin_bottom = 12.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "B"
 
+[node name="moneyguage2" type="Sprite" parent="guage_a2"]
+show_behind_parent = true
+position = Vector2( -3, -3 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="moneyguage3" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 2, 17 )
+texture = ExtResource( 6 )
+centered = false
+
 [node name="guage_a3" type="TextureProgress" parent="."]
-margin_left = 3.0
-margin_top = 17.0
-margin_right = 88.0
-margin_bottom = 27.0
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 90.0
+margin_bottom = 30.0
 value = 37.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-script = ExtResource( 6 )
+texture_progress = ExtResource( 4 )
+script = ExtResource( 5 )
 letter = "c"
 
 [node name="Label3" type="Label" parent="guage_a3"]
-margin_left = 78.0
-margin_top = 1.0
-margin_right = 118.0
-margin_bottom = 15.0
+margin_left = 75.0
+margin_top = -2.0
+margin_right = 84.0
+margin_bottom = 12.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "C"

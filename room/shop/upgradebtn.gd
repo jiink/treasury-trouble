@@ -43,4 +43,4 @@ func update_price():
 		"abl":
 			price = 6500
 			
-	price_tag.text = "$%1.2fk" % (price * 0.001)
+	price_tag.text = "$%1.1fk" % (price * 0.001)
