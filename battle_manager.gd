@@ -50,11 +50,15 @@ func timer_end():
 		shop.roll_out()
 		
 		wave_timer.start(wavetime)
-		$spawn_timer.start(1)
+		$spawn_timer.start(0.1)
 		
 	elif state == IN_PROGRESS:
 		state = PREP
 		shop.roll_in()
+		
+		for foe in get_tree().get_nodes_in_group("foes"):
+			foe.die()
+			
 		wave += 1
 		wave_timer.start(preptime)
 
@@ -66,6 +70,6 @@ func spawn_foe(where, amount):
 		$"../sort/foes".add_child(foe)
 
 func spawn_timer_end():
-	spawn_foe($spawnpoints.get_children()[randi() % $spawnpoints.get_children().size()].position, randi() % 4)
+	spawn_foe($spawnpoints.get_children()[randi() % $spawnpoints.get_children().size()].position, 1 + randi() % (2 + wave * 2))
 	if state == IN_PROGRESS:
 		$spawn_timer.start(randf() * 4 + 5)
