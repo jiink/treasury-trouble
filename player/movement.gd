@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 export (float) var max_speed = 100
 export (float) var accel = 10
@@ -22,6 +22,22 @@ func _process(delta):
 	var movement = motion * speed
 	target.move_and_slide(movement)
 	
+	var cursor_angle = target.position.angle_to_point(get_global_mouse_position())
+	#var f = cursor_angle / PI
+	#print("%1.2f PI" % f)
+	var anim_to_play
+	
+	if cursor_angle > 0 and cursor_angle <= PI/2:
+		anim_to_play = "backleft"
+	elif cursor_angle > PI/2 and cursor_angle <= PI:
+		anim_to_play = "backright"
+	elif cursor_angle > -PI and cursor_angle <= -PI/2:
+		anim_to_play = "frontright"
+	elif cursor_angle > -PI/2 and cursor_angle <= 0:
+		anim_to_play = "frontleft"
+	
+	aspr.animation = anim_to_play
+	
 #	print(direction)
 #	match direction:
 #		"rightdown" or "down" or "right":
@@ -43,10 +59,10 @@ func get_inputs(delta):
 		
 	if Input.is_action_pressed("left"):
 		motion.x -= 1
-		aspr.animation = "frontleft"
+#		aspr.animation = "frontleft"
 	if Input.is_action_pressed("right"):
 		motion.x += 1
-		aspr.animation = "frontright"
+#		aspr.animation = "frontright"
 	
 	speed = clamp(speed, 0, max_speed)
 	if Input.is_action_pressed("right") or Input.is_action_pressed("up") or Input.is_action_pressed("left") or Input.is_action_pressed("down"):
