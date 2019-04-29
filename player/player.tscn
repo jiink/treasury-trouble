@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/movement.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://player/sprites/sweep1.png" type="Texture" id=17]
 [ext_resource path="res://player/sprites/sweep2.png" type="Texture" id=18]
 [ext_resource path="res://player/sprites/sweep3.png" type="Texture" id=19]
+[ext_resource path="res://sounds/swing.wav" type="AudioStream" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -113,4 +114,7 @@ frame = 4
 [node name="timer" type="Timer" parent="sweep_box"]
 wait_time = 0.3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
 [connection signal="timeout" from="sweep_box/timer" to="sweep_box" method="_on_timer_timeout"]

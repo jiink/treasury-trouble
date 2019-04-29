@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://room/shop/shopcart.gd" type="Script" id=1]
 [ext_resource path="res://room/shop/shop.png" type="Texture" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://room/shop/upgradebtn.png" type="Texture" id=4]
 [ext_resource path="res://room/shop/upgradebtnpush.png" type="Texture" id=5]
 [ext_resource path="res://room/shop/upgradebtn.gd" type="Script" id=6]
-[ext_resource path="res://room/shop/skip.gd" type="Script" id=7]
+[ext_resource path="res://sounds/upgrade.wav" type="AudioStream" id=7]
+[ext_resource path="res://room/shop/skip.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "roll_in"
@@ -128,6 +129,10 @@ texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 4 )
 script = ExtResource( 6 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="buy_menu/VBoxContainer/spd/upgradebtn"]
+stream = ExtResource( 7 )
+volume_db = -12.661
+
 [node name="pow" type="Label" parent="buy_menu/VBoxContainer"]
 margin_top = 14.0
 margin_right = 58.0
@@ -174,6 +179,10 @@ texture_hover = ExtResource( 5 )
 texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 4 )
 script = ExtResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="buy_menu/VBoxContainer/pow/upgradebtn"]
+stream = ExtResource( 7 )
+volume_db = -12.661
 
 [node name="abl" type="Label" parent="buy_menu/VBoxContainer"]
 margin_top = 28.0
@@ -222,6 +231,10 @@ texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 4 )
 script = ExtResource( 6 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="buy_menu/VBoxContainer/abl/upgradebtn"]
+stream = ExtResource( 7 )
+volume_db = -12.661
+
 [node name="skip" type="Button" parent="buy_menu"]
 margin_left = 50.0
 margin_top = -67.0
@@ -234,7 +247,7 @@ custom_colors/font_color_pressed = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "start wave"
 flat = true
 align = 0
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="ColorRect" type="ColorRect" parent="buy_menu/skip"]
 margin_left = 6.0

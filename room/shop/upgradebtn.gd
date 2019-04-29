@@ -33,6 +33,8 @@ func on_press():
 	
 	num_tag.text = str(player.get(lvl_var_name))
 #	update_price()
+	
+	$AudioStreamPlayer.play()
 
 func update_price():
 	match type:

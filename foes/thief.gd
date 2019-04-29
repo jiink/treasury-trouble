@@ -117,6 +117,8 @@ func grab_timer_timeout():
 func get_hurt(d):
 	hp -= d
 	print("%s got hurt" % name)
+	$AudioStreamPlayer.play()
+	$AudioStreamPlayer.pitch_scale = 1 + randf() * 0.2 - 0.1
 	if hp <= 0:
 		die()
 

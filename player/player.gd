@@ -35,6 +35,8 @@ func _process(delta):
 
 func attack_melee():
 	$sweep_box.wake(damage, wep_pow)
+	$AudioStreamPlayer.play()
+	$AudioStreamPlayer.pitch_scale = 1 + randf() * 0.2 - 0.1
 
 func update_wepstats():
 	wep_pow = sqrt(pow_lvl) * 100.0
