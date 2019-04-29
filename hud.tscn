@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://equipped_wep.gd" type="Script" id=2]
@@ -8,6 +8,37 @@
 [ext_resource path="res://moneyguage.png" type="Texture" id=6]
 [ext_resource path="res://total.gd" type="Script" id=7]
 [ext_resource path="res://skip_wait_btn.gd" type="Script" id=8]
+[ext_resource path="res://exit_manager.gd" type="Script" id=9]
+[ext_resource path="res://fonts/big.tres" type="DynamicFont" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.568, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true ]
+}
 
 [node name="hud" type="CanvasLayer"]
 
@@ -135,3 +166,24 @@ margin_bottom = 137.0
 custom_fonts/font = ExtResource( 3 )
 text = "skip wait"
 script = ExtResource( 8 )
+
+[node name="exit_manager" type="Node2D" parent="."]
+position = Vector2( 128, 11 )
+script = ExtResource( 9 )
+
+[node name="label" type="Label" parent="exit_manager"]
+margin_left = -23.0
+margin_top = -7.0
+margin_right = 44.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.878431, 0.184314, 0.184314, 1 )
+custom_colors/font_outline_modulate = Color( 0.217226, 0.161013, 0.723145, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "exiting......"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="exit_manager"]
+anims/default = SubResource( 1 )
+
