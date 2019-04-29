@@ -31,6 +31,9 @@ func _process(delta):
 	match state:
 		PREP:
 			state_s = "Preperation"
+			for thing in get_tree().get_nodes_in_group("foes"):
+				thing.die()
+				
 		IN_PROGRESS:
 			state_s = "In Progress"
 		

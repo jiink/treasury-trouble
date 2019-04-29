@@ -64,6 +64,7 @@ tile_data = PoolIntArray( -1507332, 0, 0, -1507331, 0, 0, -1507330, 0, 0, -15073
 [node name="room1" type="Sprite" parent="."]
 position = Vector2( 21, -128 )
 texture = ExtResource( 4 )
+offset = Vector2( 0.5, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -174,6 +175,7 @@ texture = ExtResource( 9 )
 [node name="top2" type="Sprite" parent="enterancetop"]
 position = Vector2( -3, 660 )
 texture = ExtResource( 10 )
+offset = Vector2( 0.5, 0 )
 
 [node name="hud" parent="." instance=ExtResource( 11 )]
 
