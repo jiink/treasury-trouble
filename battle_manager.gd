@@ -46,7 +46,7 @@ func _process(delta):
 func timer_end():
 	if state == PREP:
 		state = IN_PROGRESS
-		
+		show_icon("wave")
 		shop.roll_out()
 		
 		wave_timer.start(wavetime)
@@ -55,6 +55,7 @@ func timer_end():
 	elif state == IN_PROGRESS:
 		state = PREP
 		shop.roll_in()
+		show_icon("prep")
 		
 		for foe in get_tree().get_nodes_in_group("foes"):
 			foe.die()
@@ -73,3 +74,16 @@ func spawn_timer_end():
 	spawn_foe($spawnpoints.get_children()[randi() % $spawnpoints.get_children().size()].position, 1 + randi() % (2 + wave * 2))
 	if state == IN_PROGRESS:
 		$spawn_timer.start(randf() * 4 + 5)
+
+func show_icon(type):
+	var icn
+	match type:
+		"prep":
+			icn = load("res://room/prep_icon.tscn").instance()
+		"wave":
+			icn = load("res://room/warning_icon.tscn").instance()
+		_:
+			icn = load("res://room/prep_icon.tscn").instance()
+	
+	icn.position = Vector2(256/2, 144/2)
+	$"../hud".add_child(icn)

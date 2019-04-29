@@ -37,10 +37,10 @@ func on_press():
 func update_price():
 	match type:
 		"spd":
-			price = 5000
+			price = 2900
 		"pow":
-			price = 6000
+			price = 3000
 		"abl":
-			price = 6500
+			price = 3500
 			
 	price_tag.text = "$%1.1fk" % (price * 0.001)
