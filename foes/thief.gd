@@ -52,6 +52,12 @@ func _process(delta):
 		if knockbacktime <= 0:
 			state = CHASING
 		move_and_slide(knockbackdir * knockbackspeed)
+	
+	# leave the following out if you want the thiefs to look in a pot to see if it's empty
+	
+	if target.money <= 0:
+		target = find_goldpot()
+		state = CHASING
 
 func find_goldpot(mode = "nearest"):
 	var goldpots = []
@@ -77,17 +83,21 @@ func find_goldpot(mode = "nearest"):
 
 func on_body_enter(body):
 	if body.get_node("..").is_in_group("goldpots"):
-		state = START_COLLECTING
+		if body.get_node("..").money > 0 and body.get_node("..").name == target.name:
+			state = START_COLLECTING
+		else:
+			target = find_goldpot()
 
 func on_body_exit(body):
 	if body.get_node("..").is_in_group("goldpots"):
 		state = CHASING
 
 func grab_timer_timeout():
-	target.remove_money(int(randi() % 100) + 69)
-	
-	if target.money <= 0:
-		target = find_goldpot()
+	if target != null:
+			target.remove_money(int(randi() % 100) + 69)
+			
+			if target.money <= 0:
+				target = find_goldpot()
 	
 func get_hurt(d):
 	hp -= d
