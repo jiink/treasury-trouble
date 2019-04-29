@@ -43,6 +43,7 @@ tracks/1/keys = {
 [node name="hud" type="CanvasLayer"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = 192.0
 margin_top = 4.0
 margin_right = 249.0
@@ -187,4 +188,3 @@ valign = 1
 
 [node name="anim" type="AnimationPlayer" parent="exit_manager"]
 anims/default = SubResource( 1 )
-

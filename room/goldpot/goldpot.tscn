@@ -20,12 +20,14 @@ hframes = 4
 frame = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 0, -2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 1 )
 
 [node name="label" type="Label" parent="."]
+visible = false
 margin_left = -46.0
 margin_top = -42.0
 margin_right = 47.0

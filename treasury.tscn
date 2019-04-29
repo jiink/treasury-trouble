@@ -1,17 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://treasury.gd" type="Script" id=1]
 [ext_resource path="res://battle_manager.gd" type="Script" id=2]
 [ext_resource path="res://room/woodfloor.png" type="Texture" id=3]
-[ext_resource path="res://room/room1.png" type="Texture" id=4]
-[ext_resource path="res://room/window.png" type="Texture" id=5]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://room/goldpot/goldpot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://room/shop/shopcart.tscn" type="PackedScene" id=8]
-[ext_resource path="res://room/enterancetop.png" type="Texture" id=9]
-[ext_resource path="res://room/top2.png" type="Texture" id=10]
-[ext_resource path="res://hud.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Camera2D.gd" type="Script" id=12]
+[ext_resource path="res://room/roomcleanup - Copy.png" type="Texture" id=4]
+[ext_resource path="res://room/grass.png" type="Texture" id=5]
+[ext_resource path="res://room/window.png" type="Texture" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://room/goldpot/goldpot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/small.tres" type="DynamicFont" id=9]
+[ext_resource path="res://room/shop/shopcart.tscn" type="PackedScene" id=10]
+[ext_resource path="res://room/enterancetop.png" type="Texture" id=11]
+[ext_resource path="res://room/top2.png" type="Texture" id=12]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Camera2D.gd" type="Script" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "woodfloor.png 0"
@@ -30,6 +32,9 @@ extents = Vector2( 74, 98 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24, 271 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 39, 15 )
 
 [node name="treasury" type="Node"]
 script = ExtResource( 1 )
@@ -80,11 +85,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="grass" type="Sprite" parent="room1"]
+position = Vector2( -30, -287 )
+z_index = -10
+texture = ExtResource( 5 )
+
 [node name="collisions" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( -139, -322 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D"]
@@ -94,6 +104,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( 122, -321 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D2"]
@@ -103,6 +114,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( -105, -482 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D3"]
@@ -112,6 +124,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( 82, -481 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D7"]
@@ -121,6 +134,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( -6, -555 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D8"]
@@ -130,6 +144,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( 168, 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D4"]
@@ -139,6 +154,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( -168, 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D5"]
@@ -148,6 +164,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="collisions"]
+editor/display_folded = true
 position = Vector2( 11, 195 )
 rotation = 1.5708
 
@@ -157,38 +174,78 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="spawn1col" type="StaticBody2D" parent="collisions"]
+position = Vector2( -10, -399 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/spawn1col"]
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="window" type="Sprite" parent="."]
-position = Vector2( 162, -88 )
-texture = ExtResource( 5 )
+position = Vector2( 157, -80 )
+texture = ExtResource( 6 )
 
 [node name="sort" type="YSort" parent="."]
 
-[node name="player" parent="sort" instance=ExtResource( 6 )]
-position = Vector2( -7, 31 )
+[node name="player" parent="sort" instance=ExtResource( 7 )]
+position = Vector2( -25, -350 )
 
-[node name="goldpot" parent="sort" instance=ExtResource( 7 )]
+[node name="goldpot" parent="sort" instance=ExtResource( 8 )]
 position = Vector2( 110, -169 )
 
-[node name="goldpot2" parent="sort" instance=ExtResource( 7 )]
+[node name="Label" type="Label" parent="sort/goldpot"]
+margin_left = -3.0
+margin_top = -5.0
+margin_right = 3.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0.34902, 0.337255, 0.321569, 1 )
+text = "B"
+
+[node name="goldpot2" parent="sort" instance=ExtResource( 8 )]
 position = Vector2( -104, -166 )
 
-[node name="goldpot3" parent="sort" instance=ExtResource( 7 )]
+[node name="Label2" type="Label" parent="sort/goldpot2"]
+margin_left = -2.0
+margin_top = -5.0
+margin_right = 4.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0.34902, 0.337255, 0.321569, 1 )
+text = "A"
+
+[node name="goldpot3" parent="sort" instance=ExtResource( 8 )]
 position = Vector2( 3, 137 )
+
+[node name="Label3" type="Label" parent="sort/goldpot3"]
+margin_left = -4.0
+margin_top = -6.0
+margin_right = 2.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0.34902, 0.337255, 0.321569, 1 )
+text = "C"
 
 [node name="foes" type="YSort" parent="sort"]
 
-[node name="shopcart" parent="sort" instance=ExtResource( 8 )]
+[node name="shopcart" parent="sort" instance=ExtResource( 10 )]
 
 [node name="enterancetop" type="Sprite" parent="."]
 position = Vector2( 14, -469 )
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 
 [node name="top2" type="Sprite" parent="enterancetop"]
 position = Vector2( -3, 660 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 offset = Vector2( 0.5, 0 )
 
-[node name="hud" parent="." instance=ExtResource( 11 )]
+[node name="hud" parent="." instance=ExtResource( 13 )]
 
 [node name="cam" type="Camera2D" parent="."]
 current = true
@@ -196,13 +253,12 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="wave_timer" type="Timer" parent="."]
 one_shot = true
-
 
 [editable path="hud"]
