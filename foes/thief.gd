@@ -14,6 +14,7 @@ enum{
 var state
 var prevstate
 
+var diewait = false
 var target
 
 var max_hp = 6
@@ -33,6 +34,9 @@ func _ready():
 	$sprite.play("run")
 	
 func _process(delta):
+	if diewait:
+		die()
+	
 	if state == STOPPED:
 		pass
 	
@@ -120,6 +124,11 @@ func get_hurt(d):
 	$AudioStreamPlayer.play()
 	$AudioStreamPlayer.pitch_scale = 1 + randf() * 0.2 - 0.1
 	if hp <= 0:
+		var splat = load("res://deathsplosion.tscn")
+		splat = splat.instance()
+		
+		$"..".add_child(splat)
+		splat.position = position
 		die()
 
 func be_knocked_back(power, pos):
