@@ -48,6 +48,17 @@ one_shot = true
 [node name="point" type="Position2D" parent="battle_manager/spawnpoints"]
 position = Vector2( -13, -439 )
 
+[node name="point2" type="Position2D" parent="battle_manager/spawnpoints"]
+position = Vector2( 123, -26 )
+z_index = 10
+
+[node name="ColorRect" type="ColorRect" parent="battle_manager/spawnpoints/point2"]
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 6.0
+margin_bottom = 5.0
+color = Color( 0.898039, 0.0509804, 0.0509804, 1 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 margin_left = -114.0
@@ -153,7 +164,7 @@ texture = ExtResource( 5 )
 [node name="sort" type="YSort" parent="."]
 
 [node name="player" parent="sort" instance=ExtResource( 6 )]
-position = Vector2( 74, -17 )
+position = Vector2( -7, 31 )
 
 [node name="goldpot" parent="sort" instance=ExtResource( 7 )]
 position = Vector2( 110, -169 )

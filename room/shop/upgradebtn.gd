@@ -32,15 +32,15 @@ func on_press():
 			pot.remove_money(split_price)
 	
 	num_tag.text = str(player.get(lvl_var_name))
-	update_price()
+#	update_price()
 
 func update_price():
 	match type:
 		"spd":
-			price = 2900
+			price = 2900 + int(randi() % 2000 - 1000)
 		"pow":
-			price = 3000
+			price = 3000 + int(randi() % 2000 - 1000)
 		"abl":
-			price = 3500
+			price = 3500 + int(randi() % 2000 - 1000)
 			
 	price_tag.text = "$%1.1fk" % (price * 0.001)

@@ -169,6 +169,7 @@ script = ExtResource( 8 )
 
 [node name="exit_manager" type="Node2D" parent="."]
 position = Vector2( 128, 11 )
+z_index = 100
 script = ExtResource( 9 )
 
 [node name="label" type="Label" parent="exit_manager"]

@@ -56,15 +56,19 @@ func timer_end():
 		$spawn_timer.start(0.1)
 		
 	elif state == IN_PROGRESS:
-		state = PREP
-		shop.roll_in()
-		show_icon("prep")
+		do_prep_time()
+
+func do_prep_time():
+	state = PREP
+	shop.roll_in()
+	get_tree().call_group("upgradebuttons", "update_price")
+	show_icon("prep")
+	
+	for foe in get_tree().get_nodes_in_group("foes"):
+		foe.die()
 		
-		for foe in get_tree().get_nodes_in_group("foes"):
-			foe.die()
-			
-		wave += 1
-		wave_timer.start(preptime)
+	wave += 1
+	wave_timer.start(preptime)
 
 func spawn_foe(where, amount):
 	for i in range(amount):
