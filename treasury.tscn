@@ -168,14 +168,12 @@ position = Vector2( -7, 31 )
 
 [node name="goldpot" parent="sort" instance=ExtResource( 7 )]
 position = Vector2( 110, -169 )
-money = 0
 
 [node name="goldpot2" parent="sort" instance=ExtResource( 7 )]
 position = Vector2( -104, -166 )
 
 [node name="goldpot3" parent="sort" instance=ExtResource( 7 )]
 position = Vector2( 3, 137 )
-money = 0
 
 [node name="foes" type="YSort" parent="sort"]
 

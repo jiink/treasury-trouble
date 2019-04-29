@@ -60,6 +60,7 @@ func timer_end():
 		$spawn_timer.start(0.1)
 		
 	elif state == IN_PROGRESS:
+		$spawn_timer.stop()
 		state = WAIT_FOR_PLAYER
 
 func do_prep_time():
