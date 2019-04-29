@@ -31,12 +31,14 @@ func _process(delta):
 	if Input.is_action_just_released("primary"):
 		if weapon == "sword" and $sweep_box/timer.is_stopped():
 			attack_melee()
-			$sweep_box/timer.start(swing_delay)
+			$sweep_box/timer.start(wep_spd)
 
 func attack_melee():
 	$sweep_box.wake(damage, wep_pow)
 
 func update_wepstats():
-	wep_pow = pow_lvl * 100.0
+	wep_pow = sqrt(pow_lvl) * 100.0
 	wep_spd = 1 - spd_lvl * 0.1
 	wep_abl = abl_lvl
+	
+	$sweep_box/area/CollisionShape2D.scale = Vector2(1 + wep_abl * 0.1, 1 + wep_abl * 0.2)

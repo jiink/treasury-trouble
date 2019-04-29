@@ -20,10 +20,19 @@ func on_press():
 	var lvl_var_name = "%s_lvl" % type
 	player.set(lvl_var_name, player.get(lvl_var_name) + 1)
 	player.update_wepstats()
-	num_tag.text = str(player.get(lvl_var_name))
 
-	update_price()
+	var available_pots = []
+	for pot in get_tree().get_nodes_in_group("goldpots"):
+		if pot.money > 0:
+			available_pots.append(pot)
 	
+	if available_pots.size() > 0:
+		var split_price = price / available_pots.size()
+		for pot in available_pots:
+			pot.remove_money(split_price)
+	
+	num_tag.text = str(player.get(lvl_var_name))
+	update_price()
 
 func update_price():
 	match type:

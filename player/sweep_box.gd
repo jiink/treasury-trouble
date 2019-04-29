@@ -1,10 +1,13 @@
 extends Node2D
 
-func _ready():
-	visible = false
+onready var sprite = get_node("area/CollisionShape2D/sprite")
 
+func _ready():
+#	visible = false
+	pass
+	
 func wake(damage, power):
-	visible = true
+#	visible = true
 	look_at(get_global_mouse_position())
 	
 #	$area.monitoring = true
@@ -19,11 +22,11 @@ func wake(damage, power):
 			var p = $".."
 			body.be_knocked_back(power, p.position)
 			
-	$sprite.frame = 0
-	$sprite.playing = true
+	sprite.frame = 0
+	sprite.playing = true
 
 func _on_timer_timeout():
 #	$area.monitoring = false
 #	$area.monitorable = false
-	visible = false
-	
+#	visible = false
+	pass

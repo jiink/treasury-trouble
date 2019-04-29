@@ -29,6 +29,8 @@ func _ready():
 	$grab_zone/grab_timer.connect("timeout", self, "grab_timer_timeout")
 	target = find_goldpot("random")
 	
+	speed = 40 + get_node("../../../battle_manager").wave * 2
+	
 func _process(delta):
 	if state == STOPPED:
 		pass
@@ -52,18 +54,26 @@ func _process(delta):
 		move_and_slide(knockbackdir * knockbackspeed)
 
 func find_goldpot(mode = "nearest"):
-	if mode == "nearest":
-		# nearest one
-		var goldpots = get_tree().get_nodes_in_group("goldpots")
-		var nearest_goldpot = goldpots[0]
-		for goldpot in goldpots:
-			if goldpot.global_position.distance_to(global_position) < nearest_goldpot.global_position.distance_to(global_position):
-				if goldpot.money > 0:
-					nearest_goldpot = goldpot
-		
-		return nearest_goldpot
-	elif mode == "random":
-		return get_tree().get_nodes_in_group("goldpots")[int(randf()*3)]
+	var goldpots = []
+	for pot in get_tree().get_nodes_in_group("goldpots"):
+		if pot.money > 0:
+			goldpots.append(pot)
+	
+	if goldpots.size() > 0:
+		if mode == "nearest":
+			# nearest one
+			#var goldpots = get_tree().get_nodes_in_group("goldpots")
+			var nearest_goldpot = goldpots[0]
+			for goldpot in goldpots:
+				if goldpot.global_position.distance_to(global_position) < nearest_goldpot.global_position.distance_to(global_position):
+					if goldpot.money > 0:
+						nearest_goldpot = goldpot
+			
+			return nearest_goldpot
+		elif mode == "random":
+			var index = int(randf()*3)
+			print(index)
+			return get_tree().get_nodes_in_group("goldpots")[index]
 
 func on_body_enter(body):
 	if body.get_node("..").is_in_group("goldpots"):
@@ -74,7 +84,7 @@ func on_body_exit(body):
 		state = CHASING
 
 func grab_timer_timeout():
-	target.remove_money(randi() % 100 + 69)
+	target.remove_money(int(randi() % 100) + 69)
 	
 	if target.money <= 0:
 		target = find_goldpot()

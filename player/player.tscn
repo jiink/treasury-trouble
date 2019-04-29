@@ -7,12 +7,12 @@
 [ext_resource path="res://player/sprites/ceo_run_frontleft1.png" type="Texture" id=5]
 [ext_resource path="res://player/sprites/ceo_run_frontleft2.png" type="Texture" id=6]
 [ext_resource path="res://player/sprites/ceo_run_frontleft3.png" type="Texture" id=7]
-[ext_resource path="res://player/sprites/ceo_run_backleft1.png" type="Texture" id=8]
-[ext_resource path="res://player/sprites/ceo_run_backleft2.png" type="Texture" id=9]
-[ext_resource path="res://player/sprites/ceo_run_backleft3.png" type="Texture" id=10]
-[ext_resource path="res://player/sprites/ceo_run_backright1.png" type="Texture" id=11]
-[ext_resource path="res://player/sprites/ceo_run_backright2.png" type="Texture" id=12]
-[ext_resource path="res://player/sprites/ceo_run_backright3.png" type="Texture" id=13]
+[ext_resource path="res://player/sprites/ceo_run_backright1.png" type="Texture" id=8]
+[ext_resource path="res://player/sprites/ceo_run_backright2.png" type="Texture" id=9]
+[ext_resource path="res://player/sprites/ceo_run_backright3.png" type="Texture" id=10]
+[ext_resource path="res://player/sprites/ceo_run_backleft1.png" type="Texture" id=11]
+[ext_resource path="res://player/sprites/ceo_run_backleft2.png" type="Texture" id=12]
+[ext_resource path="res://player/sprites/ceo_run_backleft3.png" type="Texture" id=13]
 [ext_resource path="res://player/movement.gd" type="Script" id=14]
 [ext_resource path="res://player/sweep_box.gd" type="Script" id=15]
 [ext_resource path="res://player/sprites/sweep4.png" type="Texture" id=16]
@@ -34,12 +34,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "backleft",
+"name": "backright",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "backright",
+"name": "backleft",
 "speed": 10.0
 } ]
 
@@ -96,7 +96,6 @@ margin_bottom = 20.0
 color = Color( 0.705882, 0.188235, 0.188235, 0.576471 )
 
 [node name="area" type="Area2D" parent="sweep_box"]
-visible = false
 position = Vector2( 22.1, 0 )
 __meta__ = {
 "_edit_group_": true
@@ -106,12 +105,12 @@ __meta__ = {
 position = Vector2( -4, 0 )
 shape = SubResource( 3 )
 
+[node name="sprite" type="AnimatedSprite" parent="sweep_box/area/CollisionShape2D"]
+position = Vector2( 2.9, -3 )
+frames = SubResource( 4 )
+frame = 4
+
 [node name="timer" type="Timer" parent="sweep_box"]
 wait_time = 0.3
 one_shot = true
-
-[node name="sprite" type="AnimatedSprite" parent="sweep_box"]
-position = Vector2( 21, -3 )
-frames = SubResource( 4 )
-frame = 4
 [connection signal="timeout" from="sweep_box/timer" to="sweep_box" method="_on_timer_timeout"]

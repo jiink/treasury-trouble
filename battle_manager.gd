@@ -8,6 +8,7 @@ var wavetime = 40
 onready var wave_info = get_node("../hud/wave_info")
 onready var wave_timer = get_node("../wave_timer")
 
+onready var shop = get_node("../sort/shopcart")
 
 
 
@@ -37,9 +38,7 @@ func _process(delta):
 			
 	wave_info.text = "Wave %s: %s\n%s" % [wave, state_s, int(wave_timer.time_left)]
 	if state == START_PREP:
-		
-		
-		
+		shop.roll_in()
 		wave_timer.start(preptime)
 		state = PREP
 	
@@ -47,11 +46,15 @@ func _process(delta):
 func timer_end():
 	if state == PREP:
 		state = IN_PROGRESS
+		
+		shop.roll_out()
+		
 		wave_timer.start(wavetime)
 		$spawn_timer.start(1)
 		
 	elif state == IN_PROGRESS:
 		state = PREP
+		shop.roll_in()
 		wave += 1
 		wave_timer.start(preptime)
 

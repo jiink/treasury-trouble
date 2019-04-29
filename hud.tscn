@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://equipped_wep.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://moneyguagefilling.png" type="Texture" id=5]
 [ext_resource path="res://player/guage.gd" type="Script" id=6]
 [ext_resource path="res://total.gd" type="Script" id=7]
+[ext_resource path="res://skip_wait_btn.gd" type="Script" id=8]
 
 [node name="hud" type="CanvasLayer"]
 
@@ -109,3 +110,12 @@ custom_colors/font_color_shadow = Color( 0.133333, 0.12549, 0.203922, 1 )
 text = "$000000"
 autowrap = true
 script = ExtResource( 7 )
+
+[node name="skip_wait_btn" type="Button" parent="."]
+margin_left = 6.0
+margin_top = 117.0
+margin_right = 80.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 3 )
+text = "skip wait"
+script = ExtResource( 8 )
