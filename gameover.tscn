@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gameover.gd" type="Script" id=1]
 [ext_resource path="res://fonts/big.tres" type="DynamicFont" id=2]
@@ -21,14 +21,29 @@ tracks/0/keys = {
 "values": [ Vector2( -16, -145 ), Vector2( -16, 0 ) ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "drop_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 4.14106, 1 ),
+"update": 0,
+"values": [ Vector2( -16, 0 ), Vector2( -16, -145 ) ]
+}
+
 [node name="gameover" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -16.0
-margin_top = -145.0
 margin_right = 271.0
+margin_bottom = 145.0
 color = Color( 0.133333, 0.12549, 0.203922, 1 )
 
 [node name="Label" type="Label" parent="ColorRect"]
@@ -52,4 +67,5 @@ texture_hover = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drop_down = SubResource( 1 )
+anims/drop_up = SubResource( 2 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

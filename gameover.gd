@@ -37,4 +37,4 @@ func on_press():
 	for pot in get_tree().get_nodes_in_group("goldpots"):
 		pot.money = pot.money_capacity
 		
-	#$AnimationPlayer.play("drop_up")
+	$AnimationPlayer.play("drop_up")
