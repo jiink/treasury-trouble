@@ -65,10 +65,11 @@ func _process(delta):
 	# leave the following out if you want the thiefs
 	# to look in a pot to see if it's empty
 
-	if target.money <= 0:
-		target = find_goldpot()
-		state = CHASING
-		$sprite.play("run")
+	if target != null:
+		if target.money <= 0:
+			target = find_goldpot()
+			state = CHASING
+			$sprite.play("run")
 	
 func find_goldpot(mode = "nearest"):
 	var goldpots = []

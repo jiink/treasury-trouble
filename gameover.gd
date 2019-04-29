@@ -30,11 +30,13 @@ func on_press():
 	battle.preptime = 15
 	battle.wavetime = 40
 	battle.state = battle.START_PREP
-
+	battle.get_node("spawn_timer").stop()
+	
 	for guy in get_tree().get_nodes_in_group("foes"):
 		guy.die()
 	
 	for pot in get_tree().get_nodes_in_group("goldpots"):
 		pot.money = pot.money_capacity
+		pot.remove_money(0)
 		
 	$AnimationPlayer.play("drop_up")
