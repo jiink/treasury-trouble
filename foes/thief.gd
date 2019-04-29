@@ -30,6 +30,7 @@ func _ready():
 	target = find_goldpot("random")
 	
 	speed = 40 + get_node("../../../battle_manager").wave * 2
+	$sprite.play("run")
 	
 func _process(delta):
 	if state == STOPPED:
@@ -40,6 +41,12 @@ func _process(delta):
 			look_at(target.position)
 		var sidev = randf() * 4 - 2
 		velocity = Vector2(1, sidev).rotated(rotation) * speed
+		var r = rotation + PI/2
+		if (r >= 0 and r < PI/2) or (r >= -3*PI/2 and r < 0):
+			$sprite.flip_h = true
+		else:
+			$sprite.flip_h = false
+		
 		rotation = 0
 		velocity = move_and_slide(velocity)
 	
@@ -49,8 +56,10 @@ func _process(delta):
 	
 	elif state == KNOCKEDBACK:
 		knockbacktime -= 1
+		$sprite.stop()
 		if knockbacktime <= 0:
 			state = CHASING
+			$sprite.play("run")
 		move_and_slide(knockbackdir * knockbackspeed)
 	
 	# leave the following out if you want the thiefs
@@ -59,7 +68,8 @@ func _process(delta):
 	if target.money <= 0:
 		target = find_goldpot()
 		state = CHASING
-
+		$sprite.play("run")
+	
 func find_goldpot(mode = "nearest"):
 	var goldpots = []
 	for pot in get_tree().get_nodes_in_group("goldpots"):
@@ -86,12 +96,15 @@ func on_body_enter(body):
 	if body.get_node("..").is_in_group("goldpots"):
 		if body.get_node("..").money > 0 and body.get_node("..").name == target.name:
 			state = START_COLLECTING
+			$sprite.play("take")
 		else:
 			target = find_goldpot()
 
 func on_body_exit(body):
 	if body.get_node("..").is_in_group("goldpots"):
 		state = CHASING
+		$sprite.play("run")
+		
 
 func grab_timer_timeout():
 	if target != null:
