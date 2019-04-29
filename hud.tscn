@@ -19,6 +19,7 @@ margin_bottom = 35.0
 color = Color( 1, 1, 1, 0.121569 )
 
 [node name="equipped_wep" type="Label" parent="."]
+visible = false
 margin_left = 188.0
 margin_top = 9.0
 margin_right = 252.0
